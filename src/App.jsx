@@ -9,6 +9,11 @@ const defaultProfile = {
   agency: 'yes',
 };
 
+const defaultRegistration = {
+  ...defaultProfile,
+  password: 'Demo@1234',
+};
+
 function PhoneFrame({ children, className = '' }) {
   return <main className={`phone-frame ${className}`}>{children}</main>;
 }
@@ -107,14 +112,7 @@ function Login({ setProfile }) {
 
 function Register({ setProfile }) {
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    fullName: 'Bhuvan',
-    phone: '',
-    email: '',
-    password: '',
-    company: '',
-    agency: 'yes',
-  });
+  const [form, setForm] = useState(defaultRegistration);
 
   function update(event) {
     setForm((current) => ({ ...current, [event.target.name]: event.target.value }));
